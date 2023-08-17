@@ -1,5 +1,5 @@
 ---
-pagetitle: "Optimization Theory and Practice"
+pagetitle: "Alex Proposal Dry Run"
 author-meta: "Aykut C. Satici"
 institute: "Boise State University"
 from: markdown+emoji
@@ -10,7 +10,7 @@ format:
     controls: true
     smaller: false
     slide-number: true
-    footer: "Optimization Theory and Practice • Aykut C. Satici"
+    footer: "Alex Proposal Dry Run • Aykut C. Satici"
     chalkboard:
       buttons: false
     preview-links: auto
@@ -22,12 +22,8 @@ format:
     pointer:
       pointerSize: 18
       color: '#32cd32'
-revealjs-plugins:
-  - pointer
 ---
 
 
 {{< include contents/_frontmatter.qmd >}}
-{{< include contents/_mdp.qmd >}}
-{{< include contents/_policy_value.qmd >}}
-{{< include contents/_bellman_lp.qmd >}}
+{{< include contents/_presentation.qmd >}}

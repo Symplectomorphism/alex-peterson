@@ -1,0 +1,146 @@
+# Presentation
+
+## Slide 1
+
+* Change the supervisory committee just to advisor.
+
+## Slide 2 {.smaller}
+
+* Is this MDPI submission related to your MS thesis? 
+  - If not remove it.
+
+* There will also be another journal publication. List it.
+
+## Increasing Dependency on Robots
+
+* Video fix.
+* 
+
+## Slide 5/6: Localization Problem {.smaller}
+
+* This is not motivated at all.
+ - You should first motivate it.
+ - Why is localization important?
+
+* What is localization?
+  - You start talking about present localization methods w/o defining what localization is.
+
+* Sensors do not describe a dynamical system. You want to describe its pose.
+* What is "precision control"?
+
+
+## Slide 8: Robot's Pose and State
+
+* What is a "given space"?
+
+## Slide 9: Robot's Sensors
+
+* Cameras are used in vision-based estimation algorithms.
+* GPS out of screen
+* Why would one use these over others?
+  - When do we want to omit them?
+  - Give some examples about what is used when.
+
+## Slide 10: Robot's Map
+
+* Picture is too small.
+* You may want a new slide for challenges.
+  - Talk about what a map is how it is produced if one is not available.
+* "Genereted" --> "generated"
+
+## Slide 11: Present SLAM Methods: Recursive
+
+* What does EKF-SLAM stand for?
+* That is the probability of robot's state at time $t$ and the map is m given
+that the measurements are $z_{1:t}$ and controls are $u_{1:t}$.
+* where shouldn't be bulleted.
+* Where is the motion model used?
+* This list is not exhaustive at all.
+* This slide needs to be explained much much better.
+
+## Slide 12: Present SLAM Methods: Batch
+
+* What is an ORB feature?
+  - Not standard terminology, explain it with something that your audience would know.
+* What is the cost function trying to minimize?
+  - You say recursively, where is the recursion?
+* Contents going out of the slide again.
+* 15 minutes at this point.
+
+## Slide 13: Present SLAM Methods: Batch
+
+* Does not require system model: it uses odometry though.
+  - If you have a model you can put it in as an odometry reading!
+* What is a factor? What is it used for?
+  - Relate it to the probability distribution you introduced before.
+* In general, you need a bunch more pictures.
+* Needs better explanation.
+
+
+## Slide 14: Case Study
+
+* First bullet point is broken.
+* Needs pictures.
+* Look at your audience, not into your computer.
+* How do they complement some sensor modalities with others?
+* Pictures/videos that go with these examples would go a long way.
+* Content going out of screen again.
+
+## Slide 15: Case Study
+
+* Zero features for vision-based estimation, not for, say, EM sensors.
+* Vision-based output can still be fused, but not when the drone is far away.
+* Content overflowing again.
+* You are just talking about the definition of your research at this point.
+  - You should do it much much earlier.
+
+## Slide 16: Proposed Method
+
+* Firmly talk about what you have completed.
+  - You have got GTSAM to work for our systems.
+  - You have got ORBSLAM to work for our systems.
+* Then talk about what you are going to do.
+  - Make these clear.
+  - You're leaving them vague.
+* What is your contribution to the literature?
+
+## Slide 17: Preliminary work: SLAM TEST
+
+* Title overflowing
+* "Cooridor" --> "corridor"
+* Not preliminary: change the title, this is part of the research you've completed.
+  - You need more slides of this form.
+  - Is there a video you can provide to go along with this?
+* What are these red dots, black dots?
+
+## Slide 18: Preliminary work: Simulation of EMF
+
+* Not preliminary, change title.
+* Title overflowing.
+* Why is this simulation important?
+  - Explain better.
+
+## Slide 19: Preliminary work: Signal Processing
+
+* I cannot see the plot very well. 
+  - Incerase font size.
+* What is this signal representing? 
+  - Try to explain yourself better.
+* You can show a Bode plot of the response of your board.
+  - You can include a picture of your board.
+* 28 minutes at this point.
+
+## Slide 20: Preliminary work: Drone Preparation
+
+* You can/should also include results from the TurtleBot.
+
+## Slide 21: Preliminary ...
+
+* Why do you need spatial separation?
+  - A: to estimate the gradient which are used in control algorithms.
+
+
+## Slide 22: Future work
+
+* What is loop-closure?
+* 30 minutes to the T.

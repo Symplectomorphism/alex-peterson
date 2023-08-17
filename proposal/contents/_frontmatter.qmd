@@ -3,7 +3,7 @@
 
 <hr>
 
-### Markov Decision Processes and Linear Programming
+### Alex's Proposal Dry Run
 
 <br/>
 
@@ -15,7 +15,5 @@ Electrical and Computer Engineering <br>
 Boise State University, Boise, ID, USA
 
 __Topics__: <br><br>
-Markov Decision Processes <br>
-Policies and Value Functions <br>
-Bellman Optimality and Linear Programming <br>
+Alex's proposal <br>
 :::
