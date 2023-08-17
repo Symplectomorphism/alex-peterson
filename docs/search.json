@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "01_introduction.html#optimization-theory-and-practice",
+    "href": "01_introduction.html#optimization-theory-and-practice",
+    "title": "01_introduction",
+    "section": "Optimization Theory and Practice",
+    "text": "Optimization Theory and Practice\n\n\nWelcome and Introduction\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Optimization  Types of Problems  Algorithms  Examples"
+  },
+  {
+    "objectID": "01_introduction.html#what-is-mathematical-optimization",
+    "href": "01_introduction.html#what-is-mathematical-optimization",
+    "title": "01_introduction",
+    "section": "What is mathematical optimization?",
+    "text": "What is mathematical optimization?\nWe have a complex decision problem to solve.\n\nRunning a business: maximize profit, minimize loss, maximize efficiency, or minimize risk.\nDesign: minimize the weight of a bridge/truss and maximize the strength within the design constraints.\nPlanning: select a flight route to minimize time or fuel consumption of an airplane.\n\n\n\n\n\n\n\n\nPhilosophy\n\n\nApproach the problem, involving the selection of values for a number of interrelated variables, by focusing attention on a single objective designed to quantify performance and measure the quality of the decision.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis one objective is maximized subject to the constraints that may limit the selection of decision variable values."
+  },
+  {
+    "objectID": "01_introduction.html#problem-formulation",
+    "href": "01_introduction.html#problem-formulation",
+    "title": "01_introduction",
+    "section": "Problem formulation",
+    "text": "Problem formulation\n \n\nAlways involves a tradeoff between conflicting objectives:\n\nbuilding a mathematical model suffiently complex to accurately capture the problem description,\nbuilding a model that is tractable.\n\nThe expert model builder is facile with both aspects of this tradeoff.\nOne aspiring to become such an expert must learn to identify and capture the important issues of a problem mainly through example and experience.\nOne must learn to distinguish tractable models from nontractable ones\n\nstudy of available theory\nnurturing the capability to extend existing theory to new situations."
+  },
+  {
+    "objectID": "01_introduction.html#linear-programming",
+    "href": "01_introduction.html#linear-programming",
+    "title": "01_introduction",
+    "section": "Linear Programming",
+    "text": "Linear Programming\n\n\n\nLinear programming (LP) is the most natural mechanism for formulating a vast array of problems with modest effort.\nLPs are characterized by linear functions of the unknowns:\n\nobjective is linear in the unknowns,\nconstraints are linear (in)equalities in the unknowns.\n\nLP formulations are popular because\n\nmathematics is nicer,\nthe theory is richer,\nthe computation is simpler.\n\n\n\n\nConsider a budget problem:\n\nTotal amount of money is to be allocated among two different commodities: x1+x2≤B \nx_1 + x_2 \\leq B\n\nObjective is to maximize the weight: w1x1+w2x2\nw_1 x_1 + w_2 x_2\n where wj,j=1,2w_j, \\, j=1,2 is the unit weight of commodity jj.\nThe overall problem would be expressed as maximizew1x1+w2x2subject tox1+x2≤B,x1,x2≥0.\n\\begin{align}\n\\operatorname{maximize} &w_1x_1 + w_2x_2 \\\\\n\\text{subject to} &x_1 + x_2 \\leq B, \\\\\n &x_1, x_2 \\geq 0.\n\\end{align}"
+  },
+  {
+    "objectID": "01_introduction.html#conic-linear-programming",
+    "href": "01_introduction.html#conic-linear-programming",
+    "title": "01_introduction",
+    "section": "Conic Linear Programming",
+    "text": "Conic Linear Programming\nConic Linear Programming, (CLP), is a natural extension of linear programming.\n\nIn LP, variables form a vector or point that is subjected to be componentwise nonnegative.\nIN CLP, they form a point in a general pointed convex cone such as a vector or a matrix.\n\n\n\nmin2x1+x2+x3subject tox1+x2+x3=1,x1,x2,x3≥𝟎,\n\\begin{align}\n\\operatorname{min} &2x_1+x_2+x_3 \\\\\n\\text{subject to} &x_1 + x_2 + x_3 = 1, \\\\\n& x_1, x_2, x_3 \\geq \\bm{0},\n\\end{align}\n\n\nmin2x1+x2+x3subject tox1+x2+x3=1,x22+x32≤x1,\n\\begin{align}\n\\operatorname{min} &2x_1+x_2+x_3 \\\\\n\\text{subject to} &x_1 + x_2 + x_3 = 1, \\\\\n& \\sqrt{x_2^2 + x_3^2} \\leq x_1,\n\\end{align}\n\n\nmin2x1+x2+x3subject tox1+x2+x3=1,(x1x2x2x3)≽𝟎.\n\\begin{align}\n\\operatorname{min} &2x_1+x_2+x_3 \\\\\n\\text{subject to} &x_1 + x_2 + x_3 = 1, \\\\\n& \\begin{pmatrix} x_1 & x_2 \\\\ x_2 & x_3 \\end{pmatrix}\\succeq \\bm{0}.\n\\end{align}\n\n\n\n\n\n\n\n\nConstraints form a vector in the nonnegative orthant cone.\n\n\n\n\n\n\n\nConstraints form a vector in a cone shaped like an ice-cream cone, called a second-order cone.\n\n\n\n\n\n\n\nConstraints form a 22-dimensional symmetric matrix required to be positive semidefinite or to be in a semidefinite cone."
+  },
+  {
+    "objectID": "01_introduction.html#unconstrained-problems",
+    "href": "01_introduction.html#unconstrained-problems",
+    "title": "01_introduction",
+    "section": "Unconstrained Problems",
+    "text": "Unconstrained Problems\n\n\nAre unconstrained optimization problems are so devoid of structural properties as to preclude their applicability as useful models of meaningful problems?\n\n\nAre unconstrained optimization problems are so devoid of structural properties as to preclude their applicability as useful models of meaningful problems? … No!\n\nConstraints may often be relaxes and built into the cost/objective function.\nSometimes (equality) constraints may be solved and these degrees of freedom may be eliminated.\n\nx1+x2=Bx_1 + x_2 = B may be eliminated by substituting x2=B−x1x_2 = B - x_1.\n\nThe study of unconstrained problems provides a stepping stone toward the more general case of constrained problems.\n\nMany aspects of both theory and algorithms are most naturally motivated and verified for the unconstrained case before progressing to the constrained case."
+  },
+  {
+    "objectID": "01_introduction.html#constrained-problems",
+    "href": "01_introduction.html#constrained-problems",
+    "title": "01_introduction",
+    "section": "Constrained Problems",
+    "text": "Constrained Problems\nMany problems met in practice are consrained problems that cannot be represented or massaged ino unconstrained ones.\n\nGeneral mathematical programming problem is\n\nminimizef(𝐱)subject tohi(𝐱)=0,i=1,2,…,mgi(𝐱)≥0,i=1,2,…,p𝐬∈S.\n\\begin{align}\n\\operatorname{minimize} & f(\\bm{x}) \\\\\n\\text{subject to} & h_i(\\bm{x}) = 0, \\; i=1, 2, \\ldots, m \\\\\n & g_i(\\bm{x}) \\geq 0, \\; i=1, 2, \\ldots, p \\\\\n &\\bm{s} \\in S.\n\\end{align}\n\n\nWe do not discuss discrete programming in this course; i.e., our variables 𝐱\\bm{x} live in a space that is continuous (for example 𝐱∈ℝn\\bm{x} \\in \\mathbb{R}^n)."
+  },
+  {
+    "objectID": "01_introduction.html#size-of-problems",
+    "href": "01_introduction.html#size-of-problems",
+    "title": "01_introduction",
+    "section": "Size of Problems",
+    "text": "Size of Problems\nSize: # of unknown variables and/or # of constraints.\n\nsmall-scale problems: ≤5\\leq 5 unknowns and constraints,\nintermediate-scale problems: 5−100/10005 - 100/1000 variables and constraints,\nlarge-scale problems: 1000−1061000 - 10^6 variables and constraints.\n\n\n\n\nComplexity theory studies how fast the computation time increases as a function of the increases in the number of variables and constraints (P≠NPP \\neq NP?).\n\n\n\n\n\n\n\n\n\nNecessary and Sufficient Optimality Conditions\n\n\nMuch of the basic theory associated with optimization is directed towards obtaining these conditions as a set of equations or inequalities.\n\nTypically, one cannot solve the necessary conditions (as complex as solving the original optimization problem).\nInstead, a more direct approach is used: search through the space for ever-improving points."
+  },
+  {
+    "objectID": "01_introduction.html#algorithms",
+    "href": "01_introduction.html#algorithms",
+    "title": "01_introduction",
+    "section": "Algorithms",
+    "text": "Algorithms\n\n\n\nComputers perform repetitive operations efficiently - algorithms are iterative in nature.\n\n\n\n\nAn initial vector 𝐱0\\bm{x}_0 is selected and the algorithm generates an improved vector 𝐱1\\bm{x}_1.\nThis is repeated to get a still better vector 𝐱2\\bm{x}_2.\nContinuing in this fashion, a sequence of ever-improving vectors 𝐱0,𝐱1,…,𝐱k,…\\bm{x}_0, \\bm{x}_1, \\ldots, \\bm{x}_k, \\ldots is found that approaches a solution point 𝐱*\\bm{x}^\\ast.\nFor linear programming this sequence may be made finite: simplex method.\nAlgorithms must be analyzed to check if they will converge to a solution point.\n\nThe rate at which they converge (if they do) are also analyzed: complexity analysis.\nOne cannot regard a problem as solved simply b/c an algorithm is known which will converge to the solution.\nIt may require an exorbitant amount of time to reduce the error to an acceptable tolerance."
+  },
+  {
+    "objectID": "01_introduction.html#convex-problems",
+    "href": "01_introduction.html#convex-problems",
+    "title": "01_introduction",
+    "section": "Convex Problems",
+    "text": "Convex Problems\n\n\n\n\n\n\n\n\nA quadratic program (QP)\n\n\nminimizef(x)=(x1−1)2+(x2−1)2\n\\begin{align}\n\\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2\n\\end{align}\n\n\n\n\n\n\n\n\n\n\n\nA linearly constrained quadratic program (QP)\n\n\nminimizef(x)=(x1−1)2+(x2−1)2subject tox1+x2=3.\n\\begin{align}\n\\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2 \\\\\n\\text{subject to} & x_1 + x_2 = 3.\n\\end{align}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA linear program (LP)\n\n\nmaximizef(x)=2x1+x2subject tox1+x2≤1,x1,x2≥0.\n\\begin{align}\n\\operatorname{maximize} & f(x) = 2x_1 + x_2\\\\\n\\text{subject to} & x_1 + x_2 \\leq 1, \\\\\n& x_1, x_2 \\geq 0.\n\\end{align}\n\n\nThe optimal solution is 𝐱*=(1,0)\\bm{x}^\\ast = (1, 0)."
+  },
+  {
+    "objectID": "01_introduction.html#nonlinear-program-nlp",
+    "href": "01_introduction.html#nonlinear-program-nlp",
+    "title": "01_introduction",
+    "section": "Nonlinear Program (NLP)",
+    "text": "Nonlinear Program (NLP)\n\n\n\n\n\n\n\n\nA nonlinear program (NLP)\n\n\nmaximizef(x)=−(x1+x2)2subject tox1x2≥0,−2≤x1≤1,−2≤x2≤1.\n\\begin{align}\n\\operatorname{maximize} & f(x) = -(x_1+x_2)^2\\\\\n\\text{subject to} & x_1x_2 \\geq 0, \\\\\n& -2 \\leq x_1 \\leq 1, \\\\\n& -2 \\leq x_2 \\leq 1.\n\\end{align}\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe point 𝐱c=(1,1)\\bm{x}_c = (1,1) has an objective value f(𝐱c)=4f(\\bm{x}_c) = 4, which is higher than any of its “nearby” feasible points (local optimizer).\nIn contrast, the point 𝐱*=(−2,−2)\\bm{x}^\\ast = (-2, -2) has an objective value f(𝐱*)=16f(\\bm{x}^\\ast) = 16, which is the best among all feasible points (global optimizer).\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+  }
+]

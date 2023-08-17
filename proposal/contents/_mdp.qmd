@@ -1,0 +1,345 @@
+# Markov Decision Processes (MDP)
+
+## Introduction
+
+* MDPs are a classical formalization of sequential decision making.
+  - Actions influence not just immediate rewards, but also subsequent states,
+    and through those, future rewards.
+  - They are meant to be a straightforward framing of the problem of learning
+    from interaction to achieve a goal.
+* MDPs involve delayed reward and the need to trade off immediate and delayed 
+reward.
+* We will estimate the value $q_\ast(s, a)$ of each action $a$ in each state
+$s$,
+  - or we estimate the value $v_\ast(s)$ of each state given optimal action
+    selections.
+* These state-dependent quantities are essential to accurately assigning credit
+for long-term consequences to individual action selections.
+
+## The Agent &ndash; Environment Interface {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+* The decision maker is called the _agent_ or _controller_.
+* The thing it interacts with, everything outside the agent, is called the
+_environment_ or _plant_.
+* These interact continually, the agent selecting _actions_ (or _control
+ signal_) and the environment responding to these control signals and presenting
+ new situations to the agent.
+* The environment also gives rise to _rewards_, special numerical values that the
+agent seeks to maximize over time through its choice of actions.
+:::
+
+::: {.callout-warning appearance="minimal"}
+* The agent and environment interact at each of a sequence of discrete time
+steps, $t = 0, 1, 2, \ldots$. 
+  - At each time step $t$, the agent receives some respresentation of the
+    environment's _state_, $S_t \in \mathcal{S}$, and on that basis selects an
+    action $A_t \in \mathcal{A}(s)$.
+  - One time step later, in part as a consequence of its actions, the agent
+    receives a numerical reward, $R_{t+1} \in \mathcal{R} \in \mathbb{R}$ and
+    finds itself in a new state, $S_{t+1}$.
+* The MDP and agent together give rise to a trajectory that begins like this:
+$$ S_0, A_0, S_1, R_1, A_2, R_2, S_2, A_2, R_3, \ldots $$ {#eq-traj}
+:::
+
+:::
+
+::: {.column width="50%"}
+<center>
+<img src="contents/assets/agent_environment.png" width="95%" /img>
+</center>
+
+::: {.callout-important appearance="minimal"}
+* In a _finite_ MDP, the sets of states, actions, and rewards   
+$(\mathcal{S}, \mathcal{A}, \mathcal{R})$ all have a finite number of elements.
+  - In this case, the random variables $R_t$ and $S_t$ have
+    well defined discrete probability distributions dependent on the preceding
+    state and action.
+
+$$ p(s', r \mid s, a) \triangleq \mathbb{P}\{S_t = s', R_t = r \mid S_{t-1} = s,
+A_{t-1} = a\} $$ {#eq-dyn}
+
+* This function $p$ defines the _dynamics_ of the MDP.
+  - It specifies a probability distribution for each choice of $s$ and $a$,
+    i.e.,
+
+$$ \sum_{s' \in \mathcal{S}} \sum_{r \in \mathcal{R}} p(s', r \mid s, a) = 1,
+\quad \forall s \in \mathcal{S}, \; a \in \mathcal{A}(s). $$ {#eq-pprob}
+
+* This is called the _Markov property_.
+:::
+
+:::
+
+
+::::
+
+
+## The Agent &ndash; Environment Interface {.smaller}
+
+* From the four-argument dynamics function, $p$, one can compute anything else
+one might want to know about the environment
+  - the _state-transition probabilities_
+$$ p(s' \mid s, a) \triangleq \mathbb{P}\{S_t = s' \mid S_{t-1} = a, A_{t-1} =
+a\} = \sum_{r \in \mathcal{R}} p(s', r \mid s, a). $$ {#eq-st-trans}
+  - the expected rewards for state-action pairs as a two-argument function 
+  $$ r(s, a) \triangleq \mathbb{E}[R_t \mid S_{t-1} = s, A_{t-1} = a] = \sum_{r
+  \in \mathcal{R}} r \sum_{s' \in \mathcal{S}} p(s', r \mid s, a), $$ {#eq-exp-rew-sa}
+  - the expected rewards for state-action-next-state triples as a three argument
+    function 
+  $$ r(s, a, s') \triangleq \mathbb{E}[R_t \mid S_{t-1} = s, A_{t-1} = a, S_t =
+  s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
+  $$ {#eq-exp-rew-sas}
+
+::: {.column-tip appearance="minimal"}
+* The time steps can refer to arbitrary successive stages of decision making.
+* The actions can be low-level controls (e.g. voltages), or high-level decisions
+(e.g. have lunch, go to grad school).
+* They can be determined by low-level sensing (e.g. sensor readings) or they can
+be more high-level and abstract (e.g. symbolic descriptions of objects in a
+room).
+* States can be anything we can know that might be useful in making the
+decisions.
+:::
+
+
+## The Agent &ndash; Environment Interface {.smaller}
+
+::: {.callout-tip icon=false}
+## Rule of thumb
+* Anything that cannot be changed arbitrarily by the agent is considered to be
+outside of it and thus part of its environment.
+:::
+
+* Not everything in the environment is unknown to the agent.
+  - For example, the agent often knows how its rewards are computed as a
+    function of its actions and the states.
+  - Reward computation is external to the agent because it defines the task
+    facing the agent and thus is beyond its ability to change arbitrarily.
+* In fact, some agents know _everything_ about how its environment.
+
+::: {.callout-tip icon=false}
+## MDP framework
+Whatever the details of the sensory, memory, and control apparatus, and whatever
+objective one is trying to achieve, any problem of learning goal-directed
+behavior can be reduced to three signals passing back and forth between an agent
+and its environment:
+
+1. one signal to represent the choices made by the agent (the actions),
+2. one signal to represent the basis on which the choices are made (the states),
+3. one signal to define the agent's goal (the rewards).
+:::
+
+
+## Examples {.smaller}
+
+::: {.callout-tip icon=false}
+## Example 1 &ndash; Bioreactor
+Suppose we want to determine moment-by-moment temperatures and stirring rates
+for a bioreactor.
+
+* The actions might be target temperatures and target stirring rates that are
+passed to the lower-level control system,
+  - The control system, in turn, will activate heating elements and motors to
+  attain the targets.
+* The states could be the outputs of a thermocouple and other sensory readings
+* The rewards might be moment-by-moment measures of the rate at which the useful
+chemical is being produced by the bioreactor.
+:::
+
+::: {.callout-tip icon=false}
+## Example 2 &ndash; Pick-and-Place Robot
+Suppose we want to control the motion of a robot arm in a repetitive
+pick-and-place task.
+
+* The actions might be the voltages applied to each motor at each joint.
+* The states might be the latest readings of joint angles and velocities.
+* The reward might be $+1$ for each object successfully picked up and placed.
+  - To encourage smooth movements, at each time step, a small, negative reward
+  could be given as a function of the moment-to-moment jerkiness of the motion.
+:::
+
+::: {.callout-warning icon=false}
+## Homework
+Devise three example tasks of your own that fit into the MDP framework,
+identifying for each states, actions, and rewards. 
+:::
+
+
+## Example &mdash; Recycling Robot {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {.r-stack}
+
+::: {.fragment .fade-out fragment-index=1}
+* A mobile robot has the job of collecting empty soda cans in an office
+environment.
+* It has sensors for detecting cans, and an arm and gripper that can pick them
+up and place them in an onboard bin; it runs on a rechargable battery.
+* The robot's control system has components for
+  - interpreting sensory information,
+  - for navigating,
+  - and for controlling the arm and gripper.
+* High-level decisions about how to search for cans are to be made by the agent
+on the current charge level of the battery.
+  - $\mathcal{S} = \{\texttt{high}, \texttt{low}\}$.
+  - $\mathcal{A}(\texttt{high}) = \{\texttt{search}, \texttt{wait}\}$, 
+    $\mathcal{A}(\texttt{low}) = \{\texttt{search}, \texttt{wait}, \texttt{recharge}\}$.
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+* The rewards are zero most of the time, but become positive when the robot
+secures an empty can, or large and negative if the battery runs all the down.
+* Best way to find cans is to actively search for them, but this runs down the
+robot's battery.
+  - If the battery is depleted, the robot must be rescued (producing a low
+    reward).
+* If the energy is $\texttt{high}$ then a period active search can always be
+completed w/o risk of depleting the battery.
+* A period of searching that begins with a $\texttt{high}$ energy level leaves
+the energy level $\texttt{high}$ with probability $\alpha$ and reduces it to
+$\texttt{low}$ with probability $1-\alpha$.
+* A period of searching undertaken when the energy level is $\texttt{low}$
+leaves it $\texttt{low}$ with probability $\beta$ and depletes the battery with
+probability $1-\beta$.
+  - Robot must be rescued and the battery is then recharged back to
+    $\texttt{high}$.
+:::
+
+
+::: {.fragment fragment-index=3}
+* Each can collected by the robot counts as a unit reward, whereas a reward of
+$-3$ results whenever the robot has to be rescued.
+* Let $r_{\text{search}}$ and $r_{\text{wait}}$ with $r_{\text{search}} >
+r_{\text{wait}}$ denote the expected number of cans the robot will collect.
+* Finally, suppose that no cans can be collected during a run home for
+recharging, and that no cans can be collected on a step in which the battery is
+depleted.
+
+::: {.callout-important icon=false}
+## Exercise
+Give a table analogous to the one on the right but for $p(s', r | s, a)$. It
+should have columns for $s, a, s', r$ and $p(s', r|s,a)$ and a row every
+$4$-tuple for which $p(s', r| s, a) > 0$.
+:::
+
+:::
+
+
+:::
+
+:::
+
+
+
+::: {.column width="40%"}
+<center>
+<img src="contents/assets/recycling1.png" width="95%" /img>
+
+<img src="contents/assets/recycling2.png" width="95%" /img>
+</center>
+
+::: {.callout-tip icon=false}
+## Transition graph
+ _states_: open circle | _actions_: solid circle
+:::
+:::
+
+::::
+
+
+
+## Goals and Rewards {.smaller}
+
+* The agent's goal is to _maximize_ the total amount of reward it receives;
+_not_ the immediate reward, but the cumulative reward in the long run.
+
+::: {.callout-important icon=false}
+## Reward Hypothesis
+All of what we mean by goal and purposes can be well thought as the maximization
+of the expected value of the cumulative sum of a received scalar signal (called
+reward).
+:::
+
+* Formulating goals in terms of reward signals has proved to be flexible and
+widely applicable.
+
+::: {.callout-note icon=false}
+## Examples
+| Task | Reward |
+|------|--------|
+|Robot walking|$+$ve reward on each time step proportional to robot's forward motion|
+|Escape from a maze| $-1$ reward for every time step that passes prior to escape|
+|Playing chess|$+1$ for winning, $-1$ for losing, $0$ for drawing|
+:::
+
+* The reward signal is no the place to impart to the agent prior knowledge
+about _how_ to achieve what we want it to do (better places: initial policy,
+iniial value function).
+  - Otherwise the agent might find a way to achieve _subgoals_ without achieving
+    the real goal!
+
+
+## Returns and Episodes {.smaller}
+
+* In general, we seek to maximize the _expected return_, where the return,
+denoted $G_t$, is defined as some specific function of the reward sequence.
+  - Simplest (bit na&iuml;ve) case: $$ G_t \triangleq R_{t+1} + R_{t+2} + \cdots + R_T = \sum_{k=t+1}^T R_k,  $$ {#eq-rew-episode}
+  - _Discounted return_: $$ G_t \triangleq \sum_{k=0}^\infty \gamma^kR_{t+k+1} =
+  \sum_{k=t+1}^T \gamma^{k-t-1}R_k, \quad 0 \leq \gamma \leq 1. $$ {#eq-rew-discounted}
+* The na&iuml;ve approach makes sense in applications in which there is a
+natural notion of a final time step (_episodes_).
+  - Each episodes ends in a state called the _terminal state_.
+  - In _episodic tasks_ we sometimes need to distinguish the set of all
+  nonterminal states, $\mathcal{S}$ from the set of all states plus the terminal
+  state, $\mathcal{S}^+$.
+* If the task has no final time, or terminal state, then $T=\infty$. 
+  - The na&iuml;ve return may easily become infinite. Hence we use the discounted return.
+$$ G_t = R_{t+1} + \gamma(R_{t+2} + \gamma R_{t+3} + \gamma^2 R_{t+4} + \cdots)
+= R_{t+1} + \gamma G_{t+1}. $$ {#eq-ret-rec}
+
+
+## Example &mdash; Pole-Balancing {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+* A failure is said to occur if the pole falls past a given angle from vertical
+or if the cart runs off the track.
+  - The pole is reset to vertical after each failure.
+* This task could be treated as _episodic_, where the natural episodes are the
+repeated atempts to balance the pole.
+  - The reward in this case would be $+1$ for every time step on which failure
+    did not occur.
+  - The return at each time would be the number of steps until failure.
+  - Successful balancing forever would mean a return of infinity.
+:::
+
+::: {.column width="40%"}
+<center>
+<img src="contents/assets/cartpole.png" width="85%" /img>
+</center>
+
+::: {.callout-tip appearance="minimal"}
+Objective: Apply forces to a cart moving along a track so as to keep a pole
+hinged to the cart from falling over.
+:::
+:::
+
+::::
+
+* Alternatively, we could treat pole-balancing as a continuing task, using
+discounting.
+  - In his case the reward would be $-1$ on each failur and zero all other
+    times.
+  - The return at each time would the be related to $-\gamma^{K-1}$, where $K$
+    is the number of time steps before failure.
+* In either case, the return is maximized by keeping the pole balanced for as
+long as possible.
