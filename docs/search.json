@@ -1,79 +1,142 @@
 [
   {
-    "objectID": "01_introduction.html#optimization-theory-and-practice",
-    "href": "01_introduction.html#optimization-theory-and-practice",
-    "title": "01_introduction",
+    "objectID": "rehearsal.html#optimization-theory-and-practice",
+    "href": "rehearsal.html#optimization-theory-and-practice",
+    "title": "",
     "section": "Optimization Theory and Practice",
-    "text": "Optimization Theory and Practice\n\n\nWelcome and Introduction\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Optimization  Types of Problems  Algorithms  Examples"
+    "text": "Optimization Theory and Practice\n\n\nAlex’s Proposal Dry Run\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Alex’s proposal"
   },
   {
-    "objectID": "01_introduction.html#what-is-mathematical-optimization",
-    "href": "01_introduction.html#what-is-mathematical-optimization",
-    "title": "01_introduction",
-    "section": "What is mathematical optimization?",
-    "text": "What is mathematical optimization?\nWe have a complex decision problem to solve.\n\nRunning a business: maximize profit, minimize loss, maximize efficiency, or minimize risk.\nDesign: minimize the weight of a bridge/truss and maximize the strength within the design constraints.\nPlanning: select a flight route to minimize time or fuel consumption of an airplane.\n\n\n\n\n\n\n\n\nPhilosophy\n\n\nApproach the problem, involving the selection of values for a number of interrelated variables, by focusing attention on a single objective designed to quantify performance and measure the quality of the decision.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis one objective is maximized subject to the constraints that may limit the selection of decision variable values."
+    "objectID": "rehearsal.html#slide-1",
+    "href": "rehearsal.html#slide-1",
+    "title": "",
+    "section": "Slide 1",
+    "text": "Slide 1\n\nChange the supervisory committee just to advisor."
   },
   {
-    "objectID": "01_introduction.html#problem-formulation",
-    "href": "01_introduction.html#problem-formulation",
-    "title": "01_introduction",
-    "section": "Problem formulation",
-    "text": "Problem formulation\n \n\nAlways involves a tradeoff between conflicting objectives:\n\nbuilding a mathematical model suffiently complex to accurately capture the problem description,\nbuilding a model that is tractable.\n\nThe expert model builder is facile with both aspects of this tradeoff.\nOne aspiring to become such an expert must learn to identify and capture the important issues of a problem mainly through example and experience.\nOne must learn to distinguish tractable models from nontractable ones\n\nstudy of available theory\nnurturing the capability to extend existing theory to new situations."
+    "objectID": "rehearsal.html#slide-2",
+    "href": "rehearsal.html#slide-2",
+    "title": "",
+    "section": "Slide 2",
+    "text": "Slide 2\n\nIs this MDPI submission related to your MS thesis?\n\nIf not remove it.\n\nThere will also be another journal publication. List it."
   },
   {
-    "objectID": "01_introduction.html#linear-programming",
-    "href": "01_introduction.html#linear-programming",
-    "title": "01_introduction",
-    "section": "Linear Programming",
-    "text": "Linear Programming\n\n\n\nLinear programming (LP) is the most natural mechanism for formulating a vast array of problems with modest effort.\nLPs are characterized by linear functions of the unknowns:\n\nobjective is linear in the unknowns,\nconstraints are linear (in)equalities in the unknowns.\n\nLP formulations are popular because\n\nmathematics is nicer,\nthe theory is richer,\nthe computation is simpler.\n\n\n\n\nConsider a budget problem:\n\nTotal amount of money is to be allocated among two different commodities: x1+x2≤B \nx_1 + x_2 \\leq B\n\nObjective is to maximize the weight: w1x1+w2x2\nw_1 x_1 + w_2 x_2\n where wj,j=1,2w_j, \\, j=1,2 is the unit weight of commodity jj.\nThe overall problem would be expressed as maximizew1x1+w2x2subject tox1+x2≤B,x1,x2≥0.\n\\begin{align}\n\\operatorname{maximize} &w_1x_1 + w_2x_2 \\\\\n\\text{subject to} &x_1 + x_2 \\leq B, \\\\\n &x_1, x_2 \\geq 0.\n\\end{align}"
+    "objectID": "rehearsal.html#increasing-dependency-on-robots",
+    "href": "rehearsal.html#increasing-dependency-on-robots",
+    "title": "",
+    "section": "Increasing Dependency on Robots",
+    "text": "Increasing Dependency on Robots\n\nVideo fix."
   },
   {
-    "objectID": "01_introduction.html#conic-linear-programming",
-    "href": "01_introduction.html#conic-linear-programming",
-    "title": "01_introduction",
-    "section": "Conic Linear Programming",
-    "text": "Conic Linear Programming\nConic Linear Programming, (CLP), is a natural extension of linear programming.\n\nIn LP, variables form a vector or point that is subjected to be componentwise nonnegative.\nIN CLP, they form a point in a general pointed convex cone such as a vector or a matrix.\n\n\n\nmin2x1+x2+x3subject tox1+x2+x3=1,x1,x2,x3≥𝟎,\n\\begin{align}\n\\operatorname{min} &2x_1+x_2+x_3 \\\\\n\\text{subject to} &x_1 + x_2 + x_3 = 1, \\\\\n& x_1, x_2, x_3 \\geq \\bm{0},\n\\end{align}\n\n\nmin2x1+x2+x3subject tox1+x2+x3=1,x22+x32≤x1,\n\\begin{align}\n\\operatorname{min} &2x_1+x_2+x_3 \\\\\n\\text{subject to} &x_1 + x_2 + x_3 = 1, \\\\\n& \\sqrt{x_2^2 + x_3^2} \\leq x_1,\n\\end{align}\n\n\nmin2x1+x2+x3subject tox1+x2+x3=1,(x1x2x2x3)≽𝟎.\n\\begin{align}\n\\operatorname{min} &2x_1+x_2+x_3 \\\\\n\\text{subject to} &x_1 + x_2 + x_3 = 1, \\\\\n& \\begin{pmatrix} x_1 & x_2 \\\\ x_2 & x_3 \\end{pmatrix}\\succeq \\bm{0}.\n\\end{align}\n\n\n\n\n\n\n\n\nConstraints form a vector in the nonnegative orthant cone.\n\n\n\n\n\n\n\nConstraints form a vector in a cone shaped like an ice-cream cone, called a second-order cone.\n\n\n\n\n\n\n\nConstraints form a 22-dimensional symmetric matrix required to be positive semidefinite or to be in a semidefinite cone."
+    "objectID": "rehearsal.html#slide-56-localization-problem",
+    "href": "rehearsal.html#slide-56-localization-problem",
+    "title": "",
+    "section": "Slide 5/6: Localization Problem",
+    "text": "Slide 5/6: Localization Problem\n\nThis is not motivated at all.\nYou should first motivate it.\nWhy is localization important?\nWhat is localization?\n\nYou start talking about present localization methods w/o defining what localization is.\n\nSensors do not describe a dynamical system. You want to describe its pose.\nWhat is “precision control”?"
   },
   {
-    "objectID": "01_introduction.html#unconstrained-problems",
-    "href": "01_introduction.html#unconstrained-problems",
-    "title": "01_introduction",
-    "section": "Unconstrained Problems",
-    "text": "Unconstrained Problems\n\n\nAre unconstrained optimization problems are so devoid of structural properties as to preclude their applicability as useful models of meaningful problems?\n\n\nAre unconstrained optimization problems are so devoid of structural properties as to preclude their applicability as useful models of meaningful problems? … No!\n\nConstraints may often be relaxes and built into the cost/objective function.\nSometimes (equality) constraints may be solved and these degrees of freedom may be eliminated.\n\nx1+x2=Bx_1 + x_2 = B may be eliminated by substituting x2=B−x1x_2 = B - x_1.\n\nThe study of unconstrained problems provides a stepping stone toward the more general case of constrained problems.\n\nMany aspects of both theory and algorithms are most naturally motivated and verified for the unconstrained case before progressing to the constrained case."
+    "objectID": "rehearsal.html#slide-8-robots-pose-and-state",
+    "href": "rehearsal.html#slide-8-robots-pose-and-state",
+    "title": "",
+    "section": "Slide 8: Robot’s Pose and State",
+    "text": "Slide 8: Robot’s Pose and State\n\nWhat is a “given space”?"
   },
   {
-    "objectID": "01_introduction.html#constrained-problems",
-    "href": "01_introduction.html#constrained-problems",
-    "title": "01_introduction",
-    "section": "Constrained Problems",
-    "text": "Constrained Problems\nMany problems met in practice are consrained problems that cannot be represented or massaged ino unconstrained ones.\n\nGeneral mathematical programming problem is\n\nminimizef(𝐱)subject tohi(𝐱)=0,i=1,2,…,mgi(𝐱)≥0,i=1,2,…,p𝐬∈S.\n\\begin{align}\n\\operatorname{minimize} & f(\\bm{x}) \\\\\n\\text{subject to} & h_i(\\bm{x}) = 0, \\; i=1, 2, \\ldots, m \\\\\n & g_i(\\bm{x}) \\geq 0, \\; i=1, 2, \\ldots, p \\\\\n &\\bm{s} \\in S.\n\\end{align}\n\n\nWe do not discuss discrete programming in this course; i.e., our variables 𝐱\\bm{x} live in a space that is continuous (for example 𝐱∈ℝn\\bm{x} \\in \\mathbb{R}^n)."
+    "objectID": "rehearsal.html#slide-9-robots-sensors",
+    "href": "rehearsal.html#slide-9-robots-sensors",
+    "title": "",
+    "section": "Slide 9: Robot’s Sensors",
+    "text": "Slide 9: Robot’s Sensors\n\nCameras are used in vision-based estimation algorithms.\nGPS out of screen\nWhy would one use these over others?\n\nWhen do we want to omit them?\nGive some examples about what is used when."
   },
   {
-    "objectID": "01_introduction.html#size-of-problems",
-    "href": "01_introduction.html#size-of-problems",
-    "title": "01_introduction",
-    "section": "Size of Problems",
-    "text": "Size of Problems\nSize: # of unknown variables and/or # of constraints.\n\nsmall-scale problems: ≤5\\leq 5 unknowns and constraints,\nintermediate-scale problems: 5−100/10005 - 100/1000 variables and constraints,\nlarge-scale problems: 1000−1061000 - 10^6 variables and constraints.\n\n\n\n\nComplexity theory studies how fast the computation time increases as a function of the increases in the number of variables and constraints (P≠NPP \\neq NP?).\n\n\n\n\n\n\n\n\n\nNecessary and Sufficient Optimality Conditions\n\n\nMuch of the basic theory associated with optimization is directed towards obtaining these conditions as a set of equations or inequalities.\n\nTypically, one cannot solve the necessary conditions (as complex as solving the original optimization problem).\nInstead, a more direct approach is used: search through the space for ever-improving points."
+    "objectID": "rehearsal.html#slide-10-robots-map",
+    "href": "rehearsal.html#slide-10-robots-map",
+    "title": "",
+    "section": "Slide 10: Robot’s Map",
+    "text": "Slide 10: Robot’s Map\n\nPicture is too small.\nYou may want a new slide for challenges.\n\nTalk about what a map is how it is produced if one is not available.\n\n“Genereted” –> “generated”"
   },
   {
-    "objectID": "01_introduction.html#algorithms",
-    "href": "01_introduction.html#algorithms",
-    "title": "01_introduction",
-    "section": "Algorithms",
-    "text": "Algorithms\n\n\n\nComputers perform repetitive operations efficiently - algorithms are iterative in nature.\n\n\n\n\nAn initial vector 𝐱0\\bm{x}_0 is selected and the algorithm generates an improved vector 𝐱1\\bm{x}_1.\nThis is repeated to get a still better vector 𝐱2\\bm{x}_2.\nContinuing in this fashion, a sequence of ever-improving vectors 𝐱0,𝐱1,…,𝐱k,…\\bm{x}_0, \\bm{x}_1, \\ldots, \\bm{x}_k, \\ldots is found that approaches a solution point 𝐱*\\bm{x}^\\ast.\nFor linear programming this sequence may be made finite: simplex method.\nAlgorithms must be analyzed to check if they will converge to a solution point.\n\nThe rate at which they converge (if they do) are also analyzed: complexity analysis.\nOne cannot regard a problem as solved simply b/c an algorithm is known which will converge to the solution.\nIt may require an exorbitant amount of time to reduce the error to an acceptable tolerance."
+    "objectID": "rehearsal.html#slide-11-present-slam-methods-recursive",
+    "href": "rehearsal.html#slide-11-present-slam-methods-recursive",
+    "title": "",
+    "section": "Slide 11: Present SLAM Methods: Recursive",
+    "text": "Slide 11: Present SLAM Methods: Recursive\n\nWhat does EKF-SLAM stand for?\nThat is the probability of robot’s state at time tt and the map is m given that the measurements are z1:tz_{1:t} and controls are u1:tu_{1:t}.\nwhere shouldn’t be bulleted.\nWhere is the motion model used?\nThis list is not exhaustive at all.\nThis slide needs to be explained much much better."
   },
   {
-    "objectID": "01_introduction.html#convex-problems",
-    "href": "01_introduction.html#convex-problems",
-    "title": "01_introduction",
-    "section": "Convex Problems",
-    "text": "Convex Problems\n\n\n\n\n\n\n\n\nA quadratic program (QP)\n\n\nminimizef(x)=(x1−1)2+(x2−1)2\n\\begin{align}\n\\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2\n\\end{align}\n\n\n\n\n\n\n\n\n\n\n\nA linearly constrained quadratic program (QP)\n\n\nminimizef(x)=(x1−1)2+(x2−1)2subject tox1+x2=3.\n\\begin{align}\n\\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2 \\\\\n\\text{subject to} & x_1 + x_2 = 3.\n\\end{align}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA linear program (LP)\n\n\nmaximizef(x)=2x1+x2subject tox1+x2≤1,x1,x2≥0.\n\\begin{align}\n\\operatorname{maximize} & f(x) = 2x_1 + x_2\\\\\n\\text{subject to} & x_1 + x_2 \\leq 1, \\\\\n& x_1, x_2 \\geq 0.\n\\end{align}\n\n\nThe optimal solution is 𝐱*=(1,0)\\bm{x}^\\ast = (1, 0)."
+    "objectID": "rehearsal.html#slide-12-present-slam-methods-batch",
+    "href": "rehearsal.html#slide-12-present-slam-methods-batch",
+    "title": "",
+    "section": "Slide 12: Present SLAM Methods: Batch",
+    "text": "Slide 12: Present SLAM Methods: Batch\n\nWhat is an ORB feature?\n\nNot standard terminology, explain it with something that your audience would know.\n\nWhat is the cost function trying to minimize?\n\nYou say recursively, where is the recursion?\n\nContents going out of the slide again.\n15 minutes at this point."
   },
   {
-    "objectID": "01_introduction.html#nonlinear-program-nlp",
-    "href": "01_introduction.html#nonlinear-program-nlp",
-    "title": "01_introduction",
-    "section": "Nonlinear Program (NLP)",
-    "text": "Nonlinear Program (NLP)\n\n\n\n\n\n\n\n\nA nonlinear program (NLP)\n\n\nmaximizef(x)=−(x1+x2)2subject tox1x2≥0,−2≤x1≤1,−2≤x2≤1.\n\\begin{align}\n\\operatorname{maximize} & f(x) = -(x_1+x_2)^2\\\\\n\\text{subject to} & x_1x_2 \\geq 0, \\\\\n& -2 \\leq x_1 \\leq 1, \\\\\n& -2 \\leq x_2 \\leq 1.\n\\end{align}\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe point 𝐱c=(1,1)\\bm{x}_c = (1,1) has an objective value f(𝐱c)=4f(\\bm{x}_c) = 4, which is higher than any of its “nearby” feasible points (local optimizer).\nIn contrast, the point 𝐱*=(−2,−2)\\bm{x}^\\ast = (-2, -2) has an objective value f(𝐱*)=16f(\\bm{x}^\\ast) = 16, which is the best among all feasible points (global optimizer).\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+    "objectID": "rehearsal.html#slide-13-present-slam-methods-batch",
+    "href": "rehearsal.html#slide-13-present-slam-methods-batch",
+    "title": "",
+    "section": "Slide 13: Present SLAM Methods: Batch",
+    "text": "Slide 13: Present SLAM Methods: Batch\n\nDoes not require system model: it uses odometry though.\n\nIf you have a model you can put it in as an odometry reading!\n\nWhat is a factor? What is it used for?\n\nRelate it to the probability distribution you introduced before.\n\nIn general, you need a bunch more pictures.\nNeeds better explanation."
+  },
+  {
+    "objectID": "rehearsal.html#slide-14-case-study",
+    "href": "rehearsal.html#slide-14-case-study",
+    "title": "",
+    "section": "Slide 14: Case Study",
+    "text": "Slide 14: Case Study\n\nFirst bullet point is broken.\nNeeds pictures.\nLook at your audience, not into your computer.\nHow do they complement some sensor modalities with others?\nPictures/videos that go with these examples would go a long way.\nContent going out of screen again."
+  },
+  {
+    "objectID": "rehearsal.html#slide-15-case-study",
+    "href": "rehearsal.html#slide-15-case-study",
+    "title": "",
+    "section": "Slide 15: Case Study",
+    "text": "Slide 15: Case Study\n\nZero features for vision-based estimation, not for, say, EM sensors.\nVision-based output can still be fused, but not when the drone is far away.\nContent overflowing again.\nYou are just talking about the definition of your research at this point.\n\nYou should do it much much earlier."
+  },
+  {
+    "objectID": "rehearsal.html#slide-16-proposed-method",
+    "href": "rehearsal.html#slide-16-proposed-method",
+    "title": "",
+    "section": "Slide 16: Proposed Method",
+    "text": "Slide 16: Proposed Method\n\nFirmly talk about what you have completed.\n\nYou have got GTSAM to work for our systems.\nYou have got ORBSLAM to work for our systems.\n\nThen talk about what you are going to do.\n\nMake these clear.\nYou’re leaving them vague.\n\nWhat is your contribution to the literature?"
+  },
+  {
+    "objectID": "rehearsal.html#slide-17-preliminary-work-slam-test",
+    "href": "rehearsal.html#slide-17-preliminary-work-slam-test",
+    "title": "",
+    "section": "Slide 17: Preliminary work: SLAM TEST",
+    "text": "Slide 17: Preliminary work: SLAM TEST\n\nTitle overflowing\n“Cooridor” –> “corridor”\nNot preliminary: change the title, this is part of the research you’ve completed.\n\nYou need more slides of this form.\nIs there a video you can provide to go along with this?\n\nWhat are these red dots, black dots?"
+  },
+  {
+    "objectID": "rehearsal.html#slide-18-preliminary-work-simulation-of-emf",
+    "href": "rehearsal.html#slide-18-preliminary-work-simulation-of-emf",
+    "title": "",
+    "section": "Slide 18: Preliminary work: Simulation of EMF",
+    "text": "Slide 18: Preliminary work: Simulation of EMF\n\nNot preliminary, change title.\nTitle overflowing.\nWhy is this simulation important?\n\nExplain better."
+  },
+  {
+    "objectID": "rehearsal.html#slide-19-preliminary-work-signal-processing",
+    "href": "rehearsal.html#slide-19-preliminary-work-signal-processing",
+    "title": "",
+    "section": "Slide 19: Preliminary work: Signal Processing",
+    "text": "Slide 19: Preliminary work: Signal Processing\n\nI cannot see the plot very well.\n\nIncerase font size.\n\nWhat is this signal representing?\n\nTry to explain yourself better.\n\nYou can show a Bode plot of the response of your board.\n\nYou can include a picture of your board.\n\n28 minutes at this point."
+  },
+  {
+    "objectID": "rehearsal.html#slide-20-preliminary-work-drone-preparation",
+    "href": "rehearsal.html#slide-20-preliminary-work-drone-preparation",
+    "title": "",
+    "section": "Slide 20: Preliminary work: Drone Preparation",
+    "text": "Slide 20: Preliminary work: Drone Preparation\n\nYou can/should also include results from the TurtleBot."
+  },
+  {
+    "objectID": "rehearsal.html#slide-21-preliminary",
+    "href": "rehearsal.html#slide-21-preliminary",
+    "title": "",
+    "section": "Slide 21: Preliminary …",
+    "text": "Slide 21: Preliminary …\n\nWhy do you need spatial separation?\n\nA: to estimate the gradient which are used in control algorithms."
+  },
+  {
+    "objectID": "rehearsal.html#slide-22-future-work",
+    "href": "rehearsal.html#slide-22-future-work",
+    "title": "",
+    "section": "Slide 22: Future work",
+    "text": "Slide 22: Future work\n\nWhat is loop-closure?\n30 minutes to the T.\n\n\n\nAlex Proposal Dry Run • Aykut C. Satici"
   }
 ]
